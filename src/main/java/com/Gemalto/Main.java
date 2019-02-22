@@ -1,5 +1,9 @@
 package com.Gemalto;
 
+import com.Gemalto.database.dao.GenericDao;
+import com.Gemalto.database.dao.GenericDaoImpl;
+import com.Gemalto.database.dbUtils.HibernateUtil;
+import com.Gemalto.models.Project;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -22,5 +26,10 @@ public class Main extends Application {
 //        primarystage.setTitle(FxmlUtils.getResourceBundle().getString("title.application"));
         primarystage.show();
         primarystage.setTitle("ffsd");
+        HibernateUtil.initDatabase();
+
+        GenericDao<Project> projectGenericDao = new GenericDaoImpl<Project>(Project.class, HibernateUtil.getSessionFactory());
+        Project project=new Project("Santander");
+        projectGenericDao.save(project);
     }
 }

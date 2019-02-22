@@ -7,6 +7,7 @@ public class TopMenuButtonController {
 
     public static final String KRS_TABLE = "/FXML/KrsTable.fxml";
     public static final String LINK_TABLE = "/FXML/LinkTable.fxml";
+    public static final String KRS_ADDING_TABLE = "/FXML/NewKrs.fxml";
 
 
     private MainController mainController;
@@ -27,5 +28,9 @@ public class TopMenuButtonController {
 
     public void linkActionButton(ActionEvent event) {
         mainController.setCenter(LINK_TABLE);
+    }
+
+    public void addActionButton(ActionEvent actionEvent) {
+        mainController.setCenter(KRS_ADDING_TABLE);
     }
 }
