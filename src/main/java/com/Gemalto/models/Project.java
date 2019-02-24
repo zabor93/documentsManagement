@@ -14,18 +14,29 @@ public class Project {
     @Column(name = "client")
     private String client;
 
-//    @Column(name = "krs")
-//    private Integer krs;
-//
-//    @Column(name = "stg")
-//    private Integer stg;
-//
-//    @Column(name = "dp_PA")
-//    private Integer dpPa;
+    @Column(name = "krs")
+    private String krs;
+
+    @Column(name = "stg")
+    private String stg;
+
+    @Column(name = "dp_PA")
+    private String dpPa;
 
 //    @OneToOne
 //    @JoinColumn(name = "id_details")
 //    private ProjectDetails projectDetails;
+
+
+    public Project(String client, String krs, String stg, String dpPa) {
+        this.client = client;
+        this.krs = krs;
+        this.stg = stg;
+        this.dpPa = dpPa;
+    }
+
+    public Project() {
+    }
 
     public Integer getId() {
         return id;
@@ -43,52 +54,38 @@ public class Project {
         this.client = client;
     }
 
-//    public Integer getKrs() {
-//        return krs;
-//    }
-//
-//    public void setKrs(Integer krs) {
-//        this.krs = krs;
-//    }
-//
-//    public Integer getStg() {
-//        return stg;
-//    }
-//
-//    public void setStg(Integer stg) {
-//        this.stg = stg;
-//    }
-//
-//    public Integer getDpPa() {
-//        return dpPa;
-//    }
-//
-//    public void setDpPa(Integer dpPa) {
-//        this.dpPa = dpPa;
-//    }
-
-//    public Project(String client, Integer krs, Integer stg, Integer dpPa) {
-//        this.client = client;
-////        this.krs = krs;
-////        this.stg = stg;
-////        this.dpPa = dpPa;
-//    }
-
-    public Project(String client) {
-        this.client = client;
+    public String getKrs() {
+        return krs;
     }
 
-    public Project() {
+    public void setKrs(String krs) {
+        this.krs = krs;
     }
-//
-//    @Override
-//    public String toString() {
-//        return "Project{" +
-//                "client='" + client + '\'' +
-//                ", krs=" + krs +
-//                ", stg=" + stg +
-//                ", dpPa=" + dpPa +
-//                '}';
-//    }
+
+    public String getStg() {
+        return stg;
+    }
+
+    public void setStg(String stg) {
+        this.stg = stg;
+    }
+
+    public String getDpPa() {
+        return dpPa;
+    }
+
+    public void setDpPa(String dpPa) {
+        this.dpPa = dpPa;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "client='" + client + '\'' +
+                ", krs=" + krs +
+                ", stg=" + stg +
+                ", dpPa=" + dpPa +
+                '}';
+    }
 }
 
