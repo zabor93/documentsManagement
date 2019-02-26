@@ -15,6 +15,8 @@ import java.util.List;
 public class Main extends Application {
 
     public static final String BORDER_PANE_MAIN_FXML = "/FXML/BorderPaneMain.fxml";
+    public static final String LOGIN_FXML = "/FXML/Login.fxml";
+
 
     public static void main(String[] args) {
         launch(args);
@@ -22,7 +24,7 @@ public class Main extends Application {
 
     public void start(Stage primarystage) throws Exception {
 //        Locale.setDefault(new Locale("en"));
-        Pane borderPane = FxmlUtils.fxmlLoader(BORDER_PANE_MAIN_FXML);
+        Pane borderPane = FxmlUtils.fxmlLoader(LOGIN_FXML);
         Scene scene = new Scene(borderPane);
         primarystage.setScene(scene);
 //        primarystage.setTitle(FxmlUtils.getResourceBundle().getString("title.application"));

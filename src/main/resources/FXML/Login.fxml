@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../CSS/Style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Gemalto.controllers.LoginController">
+   <children>
+      <TextField layoutX="331.0" layoutY="108.0" prefHeight="25.0" prefWidth="190.0" promptText="User" />
+      <Button fx:id="loginButton" layoutX="331.0" layoutY="243.0" mnemonicParsing="false" onAction="#loginActionButton" prefHeight="47.0" prefWidth="117.0" styleClass="big-yellow" stylesheets="@../CSS/Style.css" text="Login" />
+      <Button layoutX="457.0" layoutY="243.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="128.0" styleClass="big-yellow" stylesheets="@../CSS/Style.css" text="Create User " />
+      <ImageView fitHeight="190.0" fitWidth="194.0" layoutX="63.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/login.jpg" />
+         </image>
+      </ImageView>
+      <PasswordField layoutX="331.0" layoutY="179.0" prefHeight="25.0" prefWidth="190.0" />
+      <Label layoutX="331.0" layoutY="88.0" text="Login:" />
+      <Label layoutX="331.0" layoutY="162.0" text="Password:" />
+   </children>
+</AnchorPane>

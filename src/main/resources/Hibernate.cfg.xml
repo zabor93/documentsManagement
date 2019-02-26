@@ -18,5 +18,7 @@
     <property name="show_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <mapping class="com.Gemalto.models.Project"></mapping>
+    <mapping class="com.Gemalto.models.Tool"></mapping>
+
 </session-factory>
 </hibernate-configuration>
