@@ -9,16 +9,17 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import utils.FxmlUtils;
 
+import javax.swing.tree.ExpandVetoException;
 import java.io.IOException;
 
 public class LoginController {
 
+    private static final String LOGINPATH = "/FXML/BorderPaneMain.fxml";
+
     public void loginActionButton(ActionEvent event) throws IOException {
 
-        Parent tableView= FXMLLoader.load(getClass().getResource("/FXML/BorderPaneMain.fxml"));
-        Scene tableViewScene = new Scene(tableView);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(tableViewScene);
-        window.show();
+        FxmlUtils FXML=new FxmlUtils();
+        FXML.changeScreen(event,LOGINPATH);
+//        FxmlUtils.changeScreen(event, LOGINPATH);
     }
 }

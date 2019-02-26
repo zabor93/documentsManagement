@@ -2,11 +2,13 @@ package com.Gemalto.controllers;
 
 import com.Gemalto.modelsFX.ProjectFx;
 import com.Gemalto.modelsFX.ProjectModel;
+import com.Gemalto.modelsFX.ToolFx;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.util.Callback;
+
+import java.io.IOException;
 
 public class NewKrsController {
 
@@ -15,6 +17,12 @@ public class NewKrsController {
 
     @FXML
     private TextField stgTextField;
+
+    @FXML
+    private TextField pdmTextField;
+
+    @FXML
+    private TextField commentTextField;
 
     @FXML
     private TextField dpPaTextField;
@@ -55,11 +63,13 @@ public class NewKrsController {
 
 
     public void addProjectActionButton(ActionEvent actionEvent) {
-        projectModel.saveProjectInDataBase(customerTextField.getText(), krsTextField.getText(), stgTextField.getText(), dpPaTextField.getText());
+        projectModel.saveProjectInDataBase(customerTextField.getText(), krsTextField.getText(), stgTextField.getText(), dpPaTextField.getText(), pdmTextField.getText(), commentTextField.getText());
         customerTextField.clear();
         stgTextField.clear();
         dpPaTextField.clear();
         krsTextField.clear();
+        pdmTextField.clear();
+        commentTextField.clear();
     }
 
     public void editProjectActionButton(ActionEvent actionEvent) {
@@ -67,4 +77,8 @@ public class NewKrsController {
 
     public void selectionItemProjects(ActionEvent actionEvent) {
     }
+
+
+
+
 }

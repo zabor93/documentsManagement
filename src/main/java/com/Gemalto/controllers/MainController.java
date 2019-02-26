@@ -14,6 +14,9 @@ public class MainController {
     private TopMenuButtonController topMenuButtonsController;
 
     @FXML
+    private ToolController toolController;
+
+    @FXML
     private BorderPane borderPane;
 
     @FXML

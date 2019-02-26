@@ -28,6 +28,8 @@ public class ProjectModel {
             projectFx.setKrs(c.getKrs());
             projectFx.setStg(c.getStg());
             projectFx.setDpPa(c.getDpPa());
+            projectFx.setHiperlink(c.getHiperlink());
+            projectFx.setComment(c.getComment());
             this.projectslist.add(projectFx);
         });
         HibernateUtil.shutdown();
@@ -61,13 +63,15 @@ public class ProjectModel {
     }
 
 
-    public void saveProjectInDataBase(String client, String krs, String stg, String dpPa) {
+    public void saveProjectInDataBase(String client, String krs, String stg, String dpPa,String hiperlink, String comment) {
         GenericDao<Project> genericService = new GenericDaoImpl<>(Project.class, HibernateUtil.getSessionFactory());
         Project project = new Project();
         project.setClient(client);
         project.setKrs(krs);
         project.setStg(stg);
         project.setDpPa(dpPa);
+        project.setHiperlink(hiperlink);
+        project.setComment(comment);
         genericService.save(project);
         HibernateUtil.shutdown();
         init();

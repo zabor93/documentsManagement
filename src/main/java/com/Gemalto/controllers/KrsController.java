@@ -3,16 +3,16 @@ package com.Gemalto.controllers;
 import com.Gemalto.models.Project;
 import com.Gemalto.modelsFX.ProjectFx;
 import com.Gemalto.modelsFX.ProjectModel;
+import com.Gemalto.modelsFX.ToolFx;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.util.Callback;
 import utils.TableUtils;
 
 import java.awt.*;
@@ -42,6 +42,12 @@ public class KrsController {
     @FXML
     private TableColumn<ProjectFx, String> projectColumnDpPa;
 
+    @FXML
+    private TableColumn<ProjectFx, String> projectColumnHiperlink;
+
+    @FXML
+    private TableColumn<ProjectFx, String> projectColumnComment;
+
 //    FilteredList filter = new FilteredList(this.projectModel.getProjectslist(), e -> true);
 //    FilteredList<ProjectFx> filteredList = new FilteredList(projectModel.getProjectslist(), e -> true);
 
@@ -55,9 +61,12 @@ public class KrsController {
         this.projectColumnKrs.setCellValueFactory(cellData -> cellData.getValue().krsProperty());
         this.projectColumnStg.setCellValueFactory(cellData -> cellData.getValue().stgProperty());
         this.projectColumnDpPa.setCellValueFactory(cellData -> cellData.getValue().dpPaProperty());
+        this.projectColumnComment.setCellValueFactory(cellData -> cellData.getValue().commentProperty());
+
         projectFxTableView.getSelectionModel().setCellSelectionEnabled(true);
         projectFxTableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         TableUtils.installCopyPasteHandler(projectFxTableView);
+        addButtonToTable();
         FilteredList<ProjectFx> filteredData = new FilteredList<>(projectModel.getProjectslist(), p -> true);
 
 
@@ -114,4 +123,53 @@ public class KrsController {
 //        sort.comparatorProperty().bind(projectFxTableView.comparatorProperty());
 //        projectFxTableView.setItems(sort);
     }
+
+
+    private void addButtonToTable() {
+        TableColumn<ProjectFx, Void> column = new TableColumn("PDM");
+
+        Callback<TableColumn<ProjectFx, Void>, TableCell<ProjectFx, Void>> cellFactory = new Callback<TableColumn<ProjectFx, Void>, TableCell<ProjectFx, Void>>() {
+
+            @Override
+            public TableCell<ProjectFx, Void> call(final TableColumn<ProjectFx, Void> param) {
+                final TableCell<ProjectFx, Void> cell = new TableCell<ProjectFx, Void>() {
+//                    ProjectFx data = getTableView().getItems().get(getIndex());
+                    private final Button btn = new Button("GotoPDM");
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                            ProjectFx data = getTableView().getItems().get(getIndex());
+//                            DialogUtils.dialogAboutApplication();
+//                            showDialog(data.getDescription());
+                            Desktop browser= Desktop.getDesktop();
+                            try {
+                                browser.browse(new URI(data.getHiperlink()));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (URISyntaxException e) {
+                                e.printStackTrace();
+                            }
+                            System.out.println("selectedData: " + data);
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+//                            setGraphic(btn2);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        column.setCellFactory(cellFactory);
+        projectFxTableView.getColumns().add(column);
+
+    }
+
 }

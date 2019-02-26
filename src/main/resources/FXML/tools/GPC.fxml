@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Gemalto.controllers.tool.GpcController">
+   <children>
+      <Button fx:id="openbutton" layoutX="166.0" layoutY="437.0" mnemonicParsing="false" onAction="#openActionButton" prefHeight="41.0" prefWidth="193.0" text="Open folder contain GPC:" />
+      <TextArea layoutX="104.0" layoutY="77.0" prefHeight="345.0" prefWidth="640.0" text="1. GPC_Installer_2.0.0.5.exe&#10;&#9;- select SPTools 2.8&#10;2. Download and install .NET framework if necessary&#10;3. Install SPTools&#10;&#9;- create empty files on local drive:&#10;&#9;&#9;Authent.cfg&#10;&#9;&#9;Crypto.cfg&#10;&#9;&#9;Trace.cfg&#10;&#9;- installation type - development / custom - don't change any settings&#10;&#9;And point SPTool installer to these files when prompted&#10;4. After instllation, run SPTools Manager&#10;&#9;- Click Add to add another application&#10;&#9;- User Id = 1 and Password = securepersotools First name and last name - leave empty!!!&#10;&#9;- Application name = GPC_Launcher&#10;&#9;- go through all the tabs (Authentication, Log/Trace and select Mod Id 000, 01 for Default Crypto&#10;&#9;- click Validate&#10;&#9;- Exit SPTools Manager&#10;5. Run GPC&#10;&#10;" />
+      <Label layoutX="383.0" layoutY="22.0" prefHeight="45.0" prefWidth="65.0" text="GPC">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="backButton" layoutX="574.0" layoutY="441.0" mnemonicParsing="false" onAction="#backActionButton" prefHeight="41.0" prefWidth="110.0" text="BACK" />
+   </children>
+</AnchorPane>

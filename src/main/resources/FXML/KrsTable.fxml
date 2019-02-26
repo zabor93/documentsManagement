@@ -18,6 +18,7 @@
                 <TableColumn fx:id="projectColumnKrs" prefWidth="75.0" text="KRS" />
                   <TableColumn fx:id="projectColumnStg" prefWidth="75.0" text="STG" />
                   <TableColumn fx:id="projectColumnDpPa" prefWidth="75.0" text="PA" />
+                  <TableColumn fx:id="projectColumnComment" prefWidth="75.0" text="COMMENT" />
               </columns>
             </TableView>
          </center>

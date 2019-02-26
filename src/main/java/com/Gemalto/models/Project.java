@@ -23,6 +23,30 @@ public class Project {
     @Column(name = "dp_PA")
     private String dpPa;
 
+    @Column
+    private String hiperlink;
+
+    @Column
+    private String comment;
+
+
+    public String getHiperlink() {
+        return hiperlink;
+    }
+
+    public void setHiperlink(String hiperlink) {
+        this.hiperlink = hiperlink;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+
 //    @OneToOne
 //    @JoinColumn(name = "id_details")
 //    private ProjectDetails projectDetails;

@@ -13,6 +13,33 @@ public class ProjectFx {
     private StringProperty stg = new SimpleStringProperty();
     private StringProperty dpPa = new SimpleStringProperty();
 
+    private StringProperty hiperlink = new SimpleStringProperty();
+    private StringProperty comment = new SimpleStringProperty();
+
+    public String getHiperlink() {
+        return hiperlink.get();
+    }
+
+    public StringProperty hiperlinkProperty() {
+        return hiperlink;
+    }
+
+    public void setHiperlink(String hiperlink) {
+        this.hiperlink.set(hiperlink);
+    }
+
+    public String getComment() {
+        return comment.get();
+    }
+
+    public StringProperty commentProperty() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment.set(comment);
+    }
+
     public int getId() {
         return id.get();
     }
