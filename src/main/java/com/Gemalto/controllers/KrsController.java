@@ -92,7 +92,7 @@ public class KrsController {
 
     public void pdmActionButton(ActionEvent event) throws URISyntaxException, IOException {
         Desktop browser= Desktop.getDesktop();
-        browser.browse(new URI("http://www.google.com"));
+        browser.browse(new URI("https://www2.pdm.gemalto.com/Windchill/app/#ptc1/homepage"));
     }
 
     @FXML

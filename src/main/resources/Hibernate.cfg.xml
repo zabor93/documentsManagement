@@ -6,12 +6,15 @@
 <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/library</property>
-    <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC</property>-->
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/library?useTimezone=true&amp;serverTimezone=UTC</property>
+    <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/market2?useSSL=false&;serverTimezone=UTC</property>-->
+    <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/library?useSSL=false&amp;serverTimezone=UTC</property>-->
+    <!--jdbc:mysql://localhost/db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=" + TimeZone.getDefault().getID()-->
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">wikunia6</property>
-    <!--<property name="hibernate.connection.password">admin</property>-->
-    <property name="hbm2ddl.auto">create</property>
+    <!--&amp-->
+    <!--<property name="hibernate.connection.password">wikunia6</property>-->
+    <property name="hibernate.connection.password">admin</property>
+    <property name="hbm2ddl.auto">update</property>
     <property name="show_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <mapping class="com.Gemalto.models.Project"></mapping>

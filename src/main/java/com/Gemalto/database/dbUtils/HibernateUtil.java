@@ -13,7 +13,7 @@ public class HibernateUtil {
     private static SessionFactory buildSessionFactory() {
 
         try {
-            return new AnnotationConfiguration().configure(new File(pathprivate)).buildSessionFactory();
+            return new AnnotationConfiguration().configure(new File(pathGemalto)).buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
