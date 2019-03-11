@@ -30,7 +30,7 @@ public class ToolController {
 
     @FXML
     private TableColumn<ToolFx, String> toolColumnName;
-//    @FXML
+    //    @FXML
 //    private TableColumn<ToolFx, String> toolColumnDescription;
     @FXML
 //    private TableColumn<ToolFx, Button> toolColumnButton;
@@ -77,7 +77,7 @@ public class ToolController {
 //                            DialogUtils.dialogAboutApplication();
 //                            showDialog(data.getDescription());
                             try {
-//                                loginActionButton(event, "/FXML/tools/" + data.getTool() + ".fxml");
+//                                loginActionButton(event, "/FXML/tools/" + data.getName() + ".fxml");
                                 actionButton("/FXML/tools/" + data.getTool() + ".fxml");
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -100,10 +100,8 @@ public class ToolController {
                 return cell;
             }
         };
-
         colBtn.setCellFactory(cellFactory);
         tableView.getColumns().add(colBtn);
-
     }
 
 

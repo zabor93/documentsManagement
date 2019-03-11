@@ -80,11 +80,7 @@ public class ProjectModel {
     public void updateProjectInDataBase() {
         GenericDao<Project> genericService = new GenericDaoImpl<>(Project.class, HibernateUtil.getSessionFactory());
         Project tempProject = (Project) genericService.find(Project.class, getProject().getId());
-        tempProject.setClient(getProject().getClient());
-        tempProject.setId(getProject().getId());
-        tempProject.setStg(getProject().getStg());
-        tempProject.setKrs(getProject().getKrs());
-        tempProject.setDpPa(getProject().getDpPa());
+        tempProject.setComment(getProject().getComment());
         genericService.update(tempProject);
         HibernateUtil.shutdown();
         init();

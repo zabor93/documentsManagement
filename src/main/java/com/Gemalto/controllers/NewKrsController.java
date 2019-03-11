@@ -73,6 +73,7 @@ public class NewKrsController {
     }
 
     public void editProjectActionButton(ActionEvent actionEvent) {
+        System.out.println(this.projectComboBox.getSelectionModel().getSelectedItem().getId());
     }
 
     public void selectionItemProjects(ActionEvent actionEvent) {

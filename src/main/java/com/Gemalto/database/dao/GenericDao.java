@@ -7,9 +7,12 @@ public interface GenericDao<T> {
 
     T get(Class<T> tClass, Integer id);
 
+    T get2(Class<T> tClass, String name);
+
     T save(T object);
 
     void update(T object);
+
 
     void delete(T object);
 

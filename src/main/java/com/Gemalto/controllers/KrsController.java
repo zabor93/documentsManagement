@@ -11,8 +11,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
+import org.hibernate.cache.ReadWriteCache;
 import utils.TableUtils;
 
 import java.awt.*;
@@ -67,6 +70,11 @@ public class KrsController {
         projectFxTableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         TableUtils.installCopyPasteHandler(projectFxTableView);
         addButtonToTable();
+        this.projectColumnComment.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        this.projectFxTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            this.projectModel.setProject(newValue);
+        });
         FilteredList<ProjectFx> filteredData = new FilteredList<>(projectModel.getProjectslist(), p -> true);
 
 
@@ -81,7 +89,7 @@ public class KrsController {
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                if (projectFx.clientProperty().getValue().toLowerCase().contains(lowerCaseFilter)) {
+                if (projectFx.clientProperty().getValue().toLowerCase().contains(lowerCaseFilter)||projectFx.krsProperty().getValue().toLowerCase().contains(lowerCaseFilter)||projectFx.stgProperty().getValue().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches first name.
                 }
                 return false; // Does not match.
@@ -96,21 +104,77 @@ public class KrsController {
 
         // 5. Add sorted (and filtered) data to the table.
         projectFxTableView.setItems(sortedData);
+
+
+
+        projectFxTableView.setRowFactory( tv -> {
+//            String name= TableUtils.copySelectionToClipboard(projectFxTableView);
+            TableRow<ProjectFx> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    String rowData = row.getItem().getDpPa();
+//                    System.out.println(rowData);
+//
+//                    System.out.println(projectFxTableView.getSelectionModel().getSelectedCells().toString());
+
+                    TablePosition pos = projectFxTableView.getSelectionModel().getSelectedCells().get(0);
+                    int row1 = pos.getRow();
+
+// Item here is the table view type:
+                    ProjectFx item = projectFxTableView.getItems().get(row1);
+
+                    TableColumn col = pos.getTableColumn();
+
+// this gives the value in the selected cell:
+                    String data = (String) col.getCellObservableValue(item).getValue();
+
+                    System.out.println(data);
+
+//                    ProjectFx projectFx=row.getItem();
+//                    System.out.println(projectFx.toString());
+
+                    for (int i = 0; i <projectModel.getProjectslist().size() ; i++) {
+                        if (data == projectModel.getProjectslist().get(i).getDpPa()) {
+                            Desktop browser= Desktop.getDesktop();
+                            try {
+                                browser.browse(new URI(projectModel.getProjectslist().get(i).getHiperlink()));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (URISyntaxException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+            });
+            return row ;
+        });
+
     }
 
 
     public void pdmActionButton(ActionEvent event) throws URISyntaxException, IOException {
-        Desktop browser= Desktop.getDesktop();
-        browser.browse(new URI("https://www2.pdm.gemalto.com/Windchill/app/#ptc1/homepage"));
+        String name= TableUtils.copySelectionToClipboard(projectFxTableView);
+        for (int i = 0; i <projectModel.getProjectslist().size() ; i++) {
+            if (name == projectModel.getProjectslist().get(i).getDpPa()) {
+                Desktop browser= Desktop.getDesktop();
+                browser.browse(new URI(projectModel.getProjectslist().get(i).getHiperlink()));
+            }
+
+        }
+        System.out.println(name);
+
+        
+
     }
 
     @FXML
     public void search(KeyEvent keyEvent) {
-
+//
 //        filterTextField.textProperty().addListener(((observable, oldValue, newValue) -> {
 //
 //            filteredList.setPredicate((Predicate<? super ProjectFx>) (ProjectFx project)->{
-//
+
 //                if (newValue.isEmpty() || newValue == null) {
 //                    return true;
 //                } else if (project.getClient().contains(newValue)) {
@@ -172,4 +236,7 @@ public class KrsController {
 
     }
 
+    public void onEditCommitEditProject(TableColumn.CellEditEvent<ProjectFx, String> projectFxStringCellEditEvent) {
+        this.projectModel.getProject().setComment(projectFxStringCellEditEvent.getNewValue());
+        this.projectModel.updateProjectInDataBase();    }
 }

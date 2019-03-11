@@ -79,7 +79,7 @@ local.properties
 .settings/
 .loadpath
 
-# External tool builders
+# External name builders
 .externalToolBuilders/
  
 # Locally stored "Eclipse launch configurations"

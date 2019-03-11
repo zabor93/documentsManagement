@@ -41,7 +41,7 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <ToggleButton fx:id="krsButton" layoutX="14.0" layoutY="27.0" mnemonicParsing="false" onAction="#krsActionButton" prefHeight="139.0" prefWidth="150.0" text="KRS">
+            <ToggleButton fx:id="krsButton" layoutX="14.0" layoutY="27.0" mnemonicParsing="false" onAction="#krsActionButton" prefHeight="139.0" prefWidth="150.0" selected="true" text="KRS">
                <padding>
                   <Insets right="20.0" />
                </padding>

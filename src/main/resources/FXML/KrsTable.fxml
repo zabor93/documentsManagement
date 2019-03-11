@@ -7,22 +7,22 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Gemalto.controllers.KrsController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Gemalto.controllers.KrsController">
    <children>
       <TextField fx:id="filterTextField" layoutX="14.0" layoutY="14.0" onKeyReleased="#search" />
-      <BorderPane layoutX="14.0" layoutY="65.0" prefHeight="370.0" prefWidth="530.0">
+      <BorderPane layoutX="14.0" layoutY="75.0" prefHeight="370.0" prefWidth="598.0">
          <center>
-            <TableView fx:id="projectFxTableView" prefHeight="354.0" prefWidth="524.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="projectFxTableView" editable="true" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="table-column" stylesheets="@../CSS/Style.css" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="projectColumnClient" prefWidth="75.0" text="Customer" />
-                <TableColumn fx:id="projectColumnKrs" prefWidth="75.0" text="KRS" />
-                  <TableColumn fx:id="projectColumnStg" prefWidth="75.0" text="STG" />
-                  <TableColumn fx:id="projectColumnDpPa" prefWidth="75.0" text="PA" />
-                  <TableColumn fx:id="projectColumnComment" prefWidth="75.0" text="COMMENT" />
+                <TableColumn fx:id="projectColumnClient" editable="false" prefWidth="200.0" text="CUSTOMER" />
+                  <TableColumn fx:id="projectColumnComment" onEditCommit="#onEditCommitEditProject" prefWidth="75.0" text="COMMENT" />
+                <TableColumn fx:id="projectColumnKrs" editable="false" prefWidth="75.0" text="KRS" />
+                  <TableColumn fx:id="projectColumnStg" editable="false" prefWidth="75.0" text="STG" />
+                  <TableColumn fx:id="projectColumnDpPa" editable="false" prefWidth="85.0" text="PA" />
               </columns>
             </TableView>
          </center>
       </BorderPane>
-      <Button fx:id="pdmButton" layoutX="600.0" layoutY="200.0" mnemonicParsing="false" onAction="#pdmActionButton" prefHeight="72.0" prefWidth="128.0" text="Go To PDM" />
+      <Button fx:id="pdmButton" layoutX="632.0" layoutY="200.0" mnemonicParsing="false" onAction="#pdmActionButton" prefHeight="72.0" prefWidth="128.0" text="Go To PDM" />
    </children>
 </Pane>

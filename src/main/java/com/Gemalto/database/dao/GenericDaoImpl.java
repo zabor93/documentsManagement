@@ -30,6 +30,16 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
         return element;
     }
 
+    public T get2(Class<T> tClass, String name) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        System.out.println();
+        T element = (T) session.get(tClass, name);
+        session.getTransaction().commit();
+        return element;
+    }
+
+
     public T save(T object) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
@@ -45,6 +55,9 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
         session.getTransaction().commit();
 
     }
+
+
+
 
     public void delete(T object) {
         Session session = sessionFactory.getCurrentSession();

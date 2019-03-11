@@ -79,7 +79,7 @@ public class TableUtils {
      * Get table selection and copy it to the clipboard.
      * @param table
      */
-    public static void copySelectionToClipboard(TableView<?> table) {
+    public static String copySelectionToClipboard(TableView<?> table) {
 
         StringBuilder clipboardString = new StringBuilder();
 
@@ -127,6 +127,7 @@ public class TableUtils {
 
                 text = ((StringProperty) observableValue).get();
 
+                return text;
             }
             else {
                 System.out.println("Unsupported observable value: " + observableValue);
@@ -147,6 +148,7 @@ public class TableUtils {
         Clipboard.getSystemClipboard().setContent(clipboardContent);
 
 
+        return null;
     }
 
     public static void pasteFromClipboard( TableView<?> table) {

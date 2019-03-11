@@ -25,15 +25,14 @@ public class GpcController {
     @FXML
     private Button backButton;
 
-        private static final String BACK = "/FXML/BorderPaneMain.fxml";
-
+    private static final String BACK = "/FXML/BorderPaneMain.fxml";
 
 
     public void openActionButton(ActionEvent actionEvent) {
 
-        Desktop d=null;
+        Desktop d = null;
         File file = new File(System.getenv("programfiles"));
-        if(Desktop.isDesktopSupported()){
+        if (Desktop.isDesktopSupported()) {
             d = Desktop.getDesktop();
         }
         try {
@@ -41,8 +40,6 @@ public class GpcController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public void backActionButton(ActionEvent actionEvent) throws IOException {

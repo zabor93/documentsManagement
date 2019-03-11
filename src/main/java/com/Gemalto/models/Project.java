@@ -59,6 +59,15 @@ public class Project {
         this.dpPa = dpPa;
     }
 
+    public Project(String client, String krs, String stg, String dpPa, String hiperlink, String comment) {
+        this.client = client;
+        this.krs = krs;
+        this.stg = stg;
+        this.dpPa = dpPa;
+        this.hiperlink = hiperlink;
+        this.comment = comment;
+    }
+
     public Project() {
     }
 

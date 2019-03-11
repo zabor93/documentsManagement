@@ -27,3 +27,12 @@
     -fx-background-radius: 0, 0, 0, 0;
     -fx-padding: 0.166667em;
 }
+
+.table-column {
+    -fx-alignment: CENTER;
+    -fx-fit-to-width: true;
+    /*width: auto;*/
+    /*table-layout: auto;*/
+    white-space: nowrap;
+
+}

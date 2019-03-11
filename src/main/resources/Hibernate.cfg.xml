@@ -14,11 +14,13 @@
     <!--&amp-->
     <!--<property name="hibernate.connection.password">wikunia6</property>-->
     <property name="hibernate.connection.password">admin</property>
-    <property name="hbm2ddl.auto">create</property>
+    <property name="hbm2ddl.auto">update</property>
     <property name="show_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <mapping class="com.Gemalto.models.Project"></mapping>
     <mapping class="com.Gemalto.models.Tool"></mapping>
+    <mapping class="com.Gemalto.models.Link"></mapping>
+
 
 </session-factory>
 </hibernate-configuration>

@@ -2,6 +2,7 @@ package com.Gemalto;
 
 import com.Gemalto.database.dao.GenericDao;
 import com.Gemalto.database.dao.GenericDaoImpl;
+import com.Gemalto.database.dbUtils.DatabaseFill;
 import com.Gemalto.database.dbUtils.HibernateUtil;
 import com.Gemalto.models.Project;
 import javafx.application.Application;
@@ -24,18 +25,22 @@ public class Main extends Application {
 
     public void start(Stage primarystage) throws Exception {
 //        Locale.setDefault(new Locale("en"));
-        Pane borderPane = FxmlUtils.fxmlLoader(LOGIN_FXML);
+        Pane borderPane = FxmlUtils.fxmlLoader(BORDER_PANE_MAIN_FXML);
         Scene scene = new Scene(borderPane);
         primarystage.setScene(scene);
 //        primarystage.setTitle(FxmlUtils.getResourceBundle().getString("title.application"));
         primarystage.show();
-        primarystage.setTitle("Documents Management");
-        HibernateUtil.initDatabase();
+//        primarystage.setAlwaysOnTop(true);
 
-        GenericDao<Project> projectGenericDao = new GenericDaoImpl<Project>(Project.class, HibernateUtil.getSessionFactory());
-        Project project=new Project("Santander","12","1233","12313312");
-        projectGenericDao.save(project);
-        List<Project> projects=projectGenericDao.getAll();
-        System.out.println(projects.get(0).getClient());
+        primarystage.setTitle("Documents Management");
+
+
+//        GenericDao<Project> projectGenericDao = new GenericDaoImpl<Project>(Project.class, HibernateUtil.getSessionFactory());
+//        Project project=new Project("Santander","12","1233","12313312");
+//        projectGenericDao.save(project);
+//        DatabaseFill.fillLinkdatabase();
+//        DatabaseFill.fillKRSDatabase();
+//        DatabaseFill.fillToolDatabase();
+
     }
 }
